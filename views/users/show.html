@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <link rel="stylesheet" href="/static/css/style.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Dosis|Handlee|Indie+Flower|Josefin+Sans|Neucha|Poiret+One|Rancho" rel="stylesheet">
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+  
+     <title>WOW</title>
+</head>
+
+<body>
+  <header>
+      <div class="container1" >
+      
+      <marquee><img src="/static/images/free.png" style="width:300px ; hight:300px" /></marquee>
+   
+      <div id="branding">
+      <center><img src="/static/images/logo2.png" alt="logo" style="width:300px ; hight:100px" ></center>
+      </div><br>
+      
+      <div class="headNav" class="center-align" class="card-panel teal lighten-2">
+     <div class="blue-text text-darken-2">
+       <a href="/users/login"  class="center-align"> Home</a>
+       <a href="/about" class="center-align"> About</a>
+      <a href="/services" class="center-align">Services </a>
+       <!-- <div id="comments">
+          <a href="#" class="btn">Contact Us</a>
+          <div id="comment-wrap">
+              <iframe src="contact.html"></iframe>
+          </div></div> -->
+        </div>
+    </div>
+      </div>
+      </header>
+      <br>
+      <div class="container1" >
+     <br><br>
+     <form action="/login?_method=DELETE" method="POST">
+      <button type="submit">Log Out</button>
+    </form>
+ <div class="dashnoardHeader">
+   <br><Br>
+    <h5 class="center-align">Welcome {{user.name}}</h5>
+    <h6 class="center-align">JUST SAID YES? LET'S GET STARTED! </h6>
+ </div>
+<h6 class="center-align"><img src="/static/images/dateC.png" height="40px" width="40px"> {{#wedDate}} {{night}} {{/wedDate}}  Days for your night to start!</h6>
+
+   <br><Br>
+
+   <div class="checklist"><img src="https://www.101planners.com/wp-content/uploads/2016/01/checklist-10-2.jpg" width="300px" height="300px" >
+    <h5><a href="/users/{{user_id}}/todo">Manage your Checklist {{completed.count}}/{{remaining.count}}</a></h5></div>
+
+
+    <div class="expensesCount">
+    <div style="width:300px; height: 300px">;<canvas id="barUChart" width="100" height="100"></canvas></div>
+    <h5><a href="/users/{{user_id}}/budget">Manage your Budget</a></h5></div>
+    <br><br><br><br><br><Br><br><Br><br><Br><br><Br>   <br><br><br><br><br><br>
+<div class="venHead" class="center-align">
+    <h5 class="center-align" >Manage Your Vendors</h5>
+    <img src="/static/images/o1.png" height="50px" width="400px"></div>
+    <br>
+<div class="vendors">
+    <table>
+        <thead>
+          <tr>
+              <th><a href="/users/{{user_id}}/vendor/venue"> <img src="https://static1.squarespace.com/static/5a3ac1c8e45a7c65ae7af0b6/t/5a838b209140b75ef974f644/1518570308127/Hotel+bel+air.png" height="100px" width="100px"><br>
+              <h6>venue</h6></a></th>
+              <th><a href="/users/{{user_id}}/vendor/dress"> <img src="https://i.pinimg.com/originals/31/c9/78/31c978a7ff575d7b9759df5989868c09.png" height="100px" width="100px"><br>
+                <h6>Dress & Attire</h6></a></th>
+                <th><a href="/users/{{user_id}}/vendor/cake"> <img src="https://cdn.shopify.com/s/files/1/0066/9525/6182/files/cake_1024x1024.png?v=1532091830" height="100px" width="100px"><br>
+                  <h6>Cake</h6></a></th>
+                    <th><a href="/users/{{user_id}}/vendor/florist"> <img src="https://img.heypik.com/58pic/27/73/02/31w58PICD9T_1024.png?x-oss-process=image/quality,q_70/watermark,image_c2h1aXlpbl9uZXcucG5n,g_center" height="100px" width="100px"><br>
+                      <h6>Florist</h6></a></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+          <th><a href="/users/{{user_id}}/vendor/jewelry"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHSDYpw9yvj0UaJ-En4p-zuDXj0vBf4b0pegAQwkGaUVkO-38G" height="100px" width="100px"><br>
+            <h6>Jewelry</h6></a></th>
+            
+            <th><a href="/users/{{user_id}}/vendor/decoration"> <img src="https://i.pinimg.com/originals/3c/a0/22/3ca0220213fb98abe65a0a0a68479044.png" height="100px" width="100px"><br>
+              <h6>Decoration</h6></a></th>
+
+              <th><a href="/users/{{user_id}}/vendor/cards"> <img src="https://d1wli5mq9yq9mw.cloudfront.net/files/cards/banners/CLAPCLAP187.png" height="100px" width="100px"><br>
+                <h6>Cards</h6></a></th>
+
+            <th><a href="/users/{{user_id}}/vendor/band"> <img src="https://cdn1.iconfinder.com/data/icons/valentine-s-day-21/100/note-512.png" height="100px" width="100px"><br>
+              <h6>Band</h6></a></th>
+          </tr>
+          <tr>
+
+              <th><a href="/users/{{user_id}}/vendor/catering"> <img src="https://img.heypik.com/58pic/27/88/43/32658PICnac_1024.png?x-oss-process=image/quality,q_70/watermark,image_c2h1aXlpbl9uZXcucG5n,g_center" height="100px" width="100px"><br>
+                <h6>Catering</h6></a></th>
+              <th><a href="/users/{{user_id}}/vendor/photography"> <img src="https://cdn140.picsart.com/260156479022212.png?r1024x1024" height="100px" width="100px"><br>
+                <h6>Photography</h6></a></th>
+
+                <th><a href="/users/{{user_id}}/vendor/artists"> <img src="https://cdn131.picsart.com/274237882013211.png?r1024x1024" height="100px" width="100px"><br>
+                  <h6>Hair & Makeup Artists</h6></a></th>
+
+                  <th> <a href="/users/{{user_id}}/vendor/likes"> <img src="https://img.artsadd.com/data/user/design/20160405/8965D8BF738FC69077E1F217A2E4A7B0_250x250.png" height="100px" width="100px"><br>
+                    <h6>All Likes</h6></a></th>
+
+    
+       
+        </tbody>
+      </table>
+
+
+    </div>
+
+    </div>
+
+<!-- 
+<footer> <img src="/static/images/footer.png" height="100px" width="100%"></a> </footer> -->
+</body>
+<script src="/static/js/main.js"></script>
+<script>
+    window.onload = function() {
+  
+        let ctx = document.getElementById("barUChart");
+        let barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Budget", "Expenses"],
+                datasets: [{
+                    label: 'spent',
+                    data: [{{#budget}} {{amount}}  {{/budget}}, {{sum.total}}],
+                    backgroundColor: [
+                        'rgb(255,138,128,0.2)',
+                        'rgb(188,170,164,0.2)',
+                   
+                    ],
+                    borderColor: [
+                        'rgb(255,138,128,1)',
+                        'rgb(188,170,164,1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+  
+
+        
+      }
+        </script>
+
+</html>
+

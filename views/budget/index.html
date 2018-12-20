@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <link rel="stylesheet" href="/static/css/style.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Dosis|Handlee|Indie+Flower|Josefin+Sans|Neucha|Poiret+One|Rancho" rel="stylesheet">
+ 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+     <title>WOW</title>
+</head>
+
+<body>
+  <header>
+      <div class="container1" >
+      
+      <marquee><img src="/static/images/free.png" style="width:300px ; hight:300px" /></marquee>
+   
+      <div id="branding">
+      <center><img src="/static/images/logo2.png" alt="logo" style="width:300px ; hight:100px" ></center>
+      </div><br>
+      
+      <div class="headNav" class="center-align" class="card-panel teal lighten-2">
+     <div class="blue-text text-darken-2">
+       <a href="/users/login"  class="center-align"> Home</a>
+       <a href="/about" class="center-align"> About</a>
+      <a href="/services" class="center-align">Services </a>
+       <!-- <div id="comments">
+          <a href="#" class="btn">Contact Us</a>
+          <div id="comment-wrap">
+              <iframe src="contact.html"></iframe>
+          </div></div> -->
+        </div>
+    </div>
+      </div>
+      </header>
+      <br>
+      <div class="container1" >
+     <br><br>
+     <form action="/login?_method=DELETE" method="POST">
+      <button type="submit">Log Out</button>
+    </form>
+
+
+<div class="budgetHeader">
+<a href="#expenseNew" rel="modal:open"> <img src="https://cdn1.iconfinder.com/data/icons/finance-10-1/65/468-512.png" width="30px" height="30px" >new expense</a>
+<a href="#newBudget" rel="modal:open"> <img src="https://png.pngtree.com/svg/20160926/budget_557214.png" width="30px" height="30px">Add Budget</a>
+&nbsp;&nbsp;<a href="#editBudget{{id}}" rel="modal:open">edit budget</a>
+<form id="editBudget{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="budgetEdit"> Edited Budget<input id="budgetEdit" name="budgetEdit" type="number" value ="{{amount}}"></label>
+    <button  type="submit"  name="budgetEdit" value ={{id}}>edit</button> 
+    </form>
+</div>
+<form id="newBudget"  class="modal" action="/users/{{user_id}}/budget" method="POST">
+    <label for="amount"> Budget amount<input id="amount" name="amount" type="text"></label>
+    <button type="submit">Use budget</button>
+  </form>
+  {{#budget}}
+<div class="budget"><h4>Budget: {{amount}}</h4></div>
+
+
+
+
+{{/budget}}
+
+<div class="bud">
+<div style="width:500px; height: 500px">;<canvas id="barChart" width="100" height="100"></canvas></div> <BR><BR>
+<h4>Venue</h4>
+<ul class="collection with-header">
+        {{#venue}}
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp;&nbsp; &nbsp; SAR {{amount}}   <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+{{/venue}}
+<br>
+<h4>Dress</h4>
+{{#dress}}
+
+<ul class="collection with-header">
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp;&nbsp; &nbsp; SAR {{amount}}  <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+<form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+<label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+{{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}}
+<button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+</form>
+
+{{/dress}}
+<br>
+<h4>Florist</h4>
+{{#florist}}
+<ul class="collection with-header">
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp; &nbsp; &nbsp; SAR {{amount}}  <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+<form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+<label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+{{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}}
+<button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+</form>
+
+{{/florist}}
+
+<br>
+<h4>Cake</h4>
+
+{{#cake}}
+<ul class="collection with-header">
+
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp;  &nbsp; &nbsp; SAR {{amount}}  <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+
+
+<form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+<label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+{{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}}
+<button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+</form>
+
+{{/cake}}
+<br>
+<h4>Catering</h4>
+{{#catering}}
+<ul class="collection with-header">
+
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp;  &nbsp; &nbsp; SAR {{amount}}  <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+<form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+<label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+{{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}}
+<button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+</form>
+
+{{/catering}}
+<br>
+<h4>Jewelry</h4>
+{{#jewelry}}
+
+<ul class="collection with-header">
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp;  &nbsp; &nbsp; SAR {{amount}}  <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+<form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+<label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+{{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}}
+<button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+</form>
+
+{{/jewelry}}
+<br>
+<h4>Decoration</h4>
+{{#decoration}}
+
+<ul class="collection with-header">
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp;  &nbsp; &nbsp; SAR {{amount}}  <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+<form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+<label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+{{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}}
+<button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+</form>
+
+{{/decoration}}
+<br>
+<h4>photography</h4>
+{{#photography}}
+<ul class="collection with-header">
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp; &nbsp; &nbsp; SAR {{amount}}  <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+
+{{/photography}}
+<br>
+<h4>band</h4>
+{{#band}}<ul class="collection with-header">
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp; &nbsp; &nbsp; SAR {{amount}}  <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+<form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+<label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+{{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}}
+<button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+</form>
+
+{{/band}}
+<br>
+<h4>cards</h4>
+{{#cards}}
+<ul class="collection with-header">
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp; &nbsp; &nbsp; SAR {{amount}}  <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+<form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+<label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+{{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}}
+<button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+</form>
+{{/cards}}
+<br>
+<h4>artist</h4>
+{{#artist}}
+<ul class="collection with-header">
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp; &nbsp; &nbsp; SAR {{amount}}  <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+<form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+<label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+{{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}}
+<button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+</form>
+{{/artist}}
+<br>
+<h4>others</h4>
+{{#others}}
+<ul class="collection with-header">
+        <li class="collection-item"><div>{{expense}} &nbsp; &nbsp; &nbsp; &nbsp; SAR {{amount}}  <form action="/users/{{user_id}}/budget/?_method=DELETE" method="POST" class="secondary-content">
+            <button  type="submit"  id="delete1" name="delete1" value={{id}} >Delete</button>
+          </form> <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a></div></li>
+      </ul>
+  <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+    <label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+   Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+   {{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}} 
+    <button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+<form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/budget?_method=PUT" method="POST">
+<label for="expense"> Expense<input id="expense" name="expense" type="text" value ="{{expense}}"></label>
+Amount<input type ="number"  id="amount" name="amountE" value ={{amount}} >
+{{#budget}}B ID<input type ="text"  id="amount" name="budId" value = {{id}} >{{/budget}}
+<button  onclik="myFunction()" type="submit"  name="edit1" value ={{id}}>edit</button> 
+</form>
+{{/others}}
+
+<BR><BR>
+
+</div>
+<form id="expenseNew"  class="modal" action="/users/{{user_id}}/budget" method="POST">
+   {{#budget}} <label for="budgetnewex">  id<input id="budgetnewex" type="number" name="budgetnewex" value={{id}}></label>{{/budget}}
+    <label for="expense"> Expense<input id="expense" name="expense" type="text"></label>
+    <label for="amountN">  amount<input id="amountN" type="number" name="amountN"></label>
+    <label for="category"> category 
+    <select name="category" id="category">
+            <option value="venue">Venue</option>
+            <option value="dress">Dress & Attire</option>
+            <option value="florist">Florist</option>
+            <option value="cake">Cake</option>
+            <option value="catering">Catering</option>
+            <option value="jewelry">Jewelry</option>
+            <option value="decoration">Decoration</option>
+            <option value="photography">Photography</option>
+            <option value="band">Band</option>
+            <option value="cards">Cards</option>
+            <option value="artist">Artists</option>
+            <option value="others">Others</option>
+          </select>
+    <button type="submit">Submit term</button>
+  </form>
+
+<!-- <footer> <img src="/static/images/footer.png" height="100px" width="100%"></a> </footer>  -->
+</body>
+<script src="/static/js/main.js"></script>
+<script>
+        window.onload = function() {
+      
+            let ctx = document.getElementById("barChart");
+            let barChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ["Venue", "Dress & Attire", "Florist", "Cake", "Catering", "Jewelry","Decoration","Photography","Band","Cards","Artist","Others"],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [{{sumVenue.sumvenue}},{{sumDresses.sumdresses}}, {{sumFlorist.sumflorist}}, {{sumCake.sumcake}}, {{sumCatering.sumcatering}},{{sumJewelry.sumjewelry}},{{sumDecoration.sumdecoration}},{{sumPhotography.sumphotography}},{{sumBand.sumband}},{{sumCards.sumcards}},{{sumArtist.sumartist}},{{sumOthers.sumothers}}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgb(255,245,157,0.2)',
+                            'rgb(176,190,197,0.2)',
+                            'rgb(85,139,47,0.2)',
+                            'rgb(0,150,136,0.2)',
+                            'rgb(248,187,208,0.2)',
+                            'rgb(255,138,128,0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgb(255,245,157,1)',
+                            'rgb(176,190,197,1)',
+                            'rgb(85,139,47),1',
+                            'rgb(0,150,136,1)',
+                            'rgb(248,187,208,1)',
+                            'rgb(255,138,128,1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+      
+
+            
+          }
+            </script>
+
+</html>
+

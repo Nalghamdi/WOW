@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+     <link rel="stylesheet" href="/static/css/style.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Dosis|Handlee|Indie+Flower|Josefin+Sans|Neucha|Poiret+One|Rancho" rel="stylesheet">
+  <title>WOW</title>
+</head>
+
+<body>
+  <header>
+      <div class="container1" >
+      
+      <marquee><img src="/static/images/free.png" style="width:300px ; hight:300px" /></marquee>
+   
+      <div id="branding">
+      <center><img src="/static/images/logo2.png" alt="logo" style="width:300px ; hight:100px" ></center>
+      </div><br>
+      
+      <div class="headNav" class="center-align" class="card-panel teal lighten-2">
+     <div class="blue-text text-darken-2">
+       <a href="/users/login"  class="center-align"> Home</a>
+       <a href="/about" class="center-align"> About</a>
+      <a href="/services" class="center-align">Services </a>
+       <!-- <div id="comments">
+          <a href="#" class="btn">Contact Us</a>
+          <div id="comment-wrap">
+              <iframe src="contact.html"></iframe>
+          </div></div> -->
+        </div>
+    </div>
+      </div>
+      </header>
+      <br>
+      <div class="container1" >
+     <br><br>
+     <form action="/login?_method=DELETE" method="POST">
+      <button type="submit">Log Out</button>
+    </form>
+
+    <a href="/users/{{user_id}}/">Back to Dashboard</a>
+    <div class="listHeader">
+        <a href="#new" rel="modal:open"><i class="material-icons">add</i>New Task</a>
+        <a href="/users/{{user_id}}/todo/completed"><i class="material-icons">assignment_turned_in</i>Completed{{completed.count}}</a>
+        <i class="material-icons">add_alarm</i> Remaining: {{remaining.count}}
+    </div>
+
+
+ 
+  
+  <div class="none">
+    {{#todo}}
+<div class="checklistDec">
+    <ul class="collection with-header">
+        <li class="collection-item">
+          <div>{{expense}} &nbsp; &nbsp;&nbsp; &nbsp;     <form id="editingCheckBox" action="/users/{{user_id}}/todo?_method=PUT" method="POST">
+            <input name="editId" type="hidden" value ="{{id}}">
+            <input type="checkbox" name="editC" value ="true"{{completion}}  onchange="document.getElementById('editingCheckBox').submit()"></form>
+            {{task}}<br>
+            {{description}}<br>
+            note:{{notes}}<br>
+             <a href="#edit{{id}}" rel="modal:open" class="secondary-content"><i class="material-icons">edit</i></a>
+             <form action="/users/{{user_id}}/todo/?_method=DELETE" method="POST">
+              <button  type="submit" value={{id}} name="deleteTodo" id="deleteTodo">Delete</button>
+            </form></div></li>
+      </ul></div>
+
+
+  
+    <form id="edit{{id}}" class="modal"  action="/users/{{user_id}}/todo?_method=PUT" method="POST">
+      <label for="name"> task<input id="name" name="name" type="text" value ="{{task}}"></label>
+      {{id}}
+      <input name="notesE"  value ="{{notes}}" >
+      <input type ="checkbox"  id="edit" name="edit" value ="true"{{completion}} >
+      <button  type="submit"  name="edit1" value ={{id}}>edit</button> 
+     </form>
+
+  
+    {{/todo}}
+
+
+    <form id="new"  class="modal" action="/users/{{user_id}}/todo" method="POST">
+      <label for="task"> Task<input id="task" name="task" type="text"></label>
+      <label for="description">  Description<input id="description" type="text" name="description"></label>
+      <label for="notes"> Notes <input id="notesN" type="text" name="notesN"></label>
+      <button type="submit">Add Task</button>
+    </form>
+  
+    
+
+
+  </div>
+
+    </div>
+
+
+<!-- 
+<footer> <img src="/static/images/footer.png" height="100px" width="100%"></a> </footer> -->
+</body>
+<script src="/static/js/main.js"></script>
+
+</html>
+

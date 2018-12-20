@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <title>Show Term</title>
+</head>
+<body>
+  
+    <a href="/">Back to home page</a>
+    <a href="/todo">List of terms!!!</a>
+
+    {{#todo}}
+
+  <li>{{task}}</li>
+    {{description}}
+      note:{{notes}}
+  <form action="/users/{{user_id}}/todo?_method=DELETE" method="POST">
+    <button  type="submit" value={{id}} name="deleteTodo" id="deleteTodo">Delete</button>
+  </form>
+  <a href="#editS{{id}}" rel="modal:open">edit form</a>
+  <form id="editS{{id}}" class="modal"  action="/users/{{user_id}}/todo?_method=PUT" method="POST">
+    <label for="name"> task<input id="name" name="name" type="text" value ="{{task}}"></label>
+    {{id}}
+    <input name="notesE"  value ="{{notes}}" >
+    <input type ="checkbox"  id="edit" name="edit" value ="true"{{completion}} >
+    <button  type="submit"  name="edit1" value ={{id}}>edit</button> 
+   </form>
+
+   
+  {{/todo}}
+
+
+
+
+
+
+   
+</body>
+</html>
+
+

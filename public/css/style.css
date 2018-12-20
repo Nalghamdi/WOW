@@ -1,0 +1,138 @@
+.container1{
+    width:90%;
+    margin:auto;
+    overflow:hidden;
+    background-color: #ffffff;
+    position: relative;
+    /* margin-top:20px; */
+   }
+
+   body{background-image:url("../images/bcg1.jpg");
+padding-top:30px;
+padding-bottom:40px;}
+
+ /* contact us*/
+ li iframe {width:100%; height:100%;border:0;}
+ #comment-wrap {background:#fff;position:relative}
+ #comments #comment-wrap{display:none;z-index:5}
+ #comments:hover #comment-wrap {display:block}
+*{font-family: 'Handlee', cursive;}
+ .loginHome{
+  padding-left: 300px;
+ }
+
+ .registerHome{
+     position: absolute;
+    right:300px;
+    top:400px;
+    border-left: 2px  dotted rgb(153,102,51, .3);
+    padding-left: 50px;
+     }
+
+     .headNav a{
+padding-left: 275px;
+color:#f7b39b;
+font-size: 20px
+
+
+     }
+     .headNav {
+       border-top: 2px solid rgb(153,102,51, .3);
+       border-bottom: 2px solid rgb(153,102,51, .3);
+       padding-top: 10px;
+padding-bottom: 10px;
+
+             }
+
+    .registerHome a{
+
+        color:#f7b39b;
+    }
+
+    .submitButton{
+        background-color: rgb(153,102,51, .3);
+        padding:10px
+    }
+
+    footer{
+        margin:0;
+        padding-top: 30px;
+    }
+
+    [type="date"] {
+        width:180px;
+          background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+        }
+        [type="date"]::-webkit-inner-spin-button {
+          display: none;
+        }
+        [type="date"]::-webkit-calendar-picker-indicator {
+          opacity: 0;
+        }
+
+        .dashnoardHeader{
+            background-image: url('/static/images/watercolor.png');
+            background-size: 800px 200px;
+            width:800px;
+            height: 200px;
+             margin-left:230px;
+             position:relative;
+        }
+
+.vendors{
+    margin-left:100px;
+   color:#f7b39b;
+   text-decoration: none;
+
+}
+.vendors a{
+    color:#f7b39b;
+text-decoration: none;}
+.bud{
+    list-style: none;
+}
+
+.budgetHeader{
+float:right;
+color:#f7b39b;
+}
+
+.expensesCount{
+    float:right;
+    color:#f7b39b;
+    margin-right:200px;
+}
+
+.expensesCount a{
+    text-decoration: none;
+    color:#f7b39b;
+    
+}
+
+.venHead img{
+    margin-left:450px
+}
+
+.venHead {
+    color: rgb(153,102,51, .3);
+}
+
+.checklist{
+    float:left;
+    margin-left:200px;
+}
+
+.checklist a{
+    text-decoration: none;
+    color:#f7b39b; 
+}
+
+
+.checklistDec {
+    list-style: none;
+}
+
+.listHeader{
+    float:right;
+color:#f7b39b;
+}

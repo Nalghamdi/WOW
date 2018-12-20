@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <link rel="stylesheet" href="/static/css/style.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Dosis|Handlee|Indie+Flower|Josefin+Sans|Neucha|Poiret+One|Rancho" rel="stylesheet">
+  <title>WOW</title>
+</head>
+
+<body>
+  <header>
+      <div class="container1" >
+      
+      <marquee><img src="/static/images/free.png" style="width:300px ; hight:300px" /></marquee>
+      
+      <div id="branding">
+      <center><img src="/static/images/logo2.png" alt="logo" style="width:300px ; hight:100px" ></center>
+      </div><br>
+      
+      <div class="headNav" class="center-align" class="card-panel teal lighten-2">
+     <div class="blue-text text-darken-2">
+       <a href="/users/login"  class="center-align"> Home</a>
+       <a href="/about" class="center-align"> About</a>
+      <a href="/services" class="center-align">Services </a>
+       <!-- <div id="comments">
+          <a href="#" class="btn">Contact Us</a>
+          <div id="comment-wrap">
+              <iframe src="contact.html"></iframe>
+          </div></div> -->
+        </div>
+    </div>
+      </div>
+      </header>
+      <br>
+      <div class="container1" >
+     <br><br>
+            <h3 class="center-align">Join us Now</h3>
+            <center><img src="/static/images/o1.png" alt="register" style="width:200px ; hight:250px" ></center>
+<div class="loginHome">
+  <form action="/users" method="POST">
+  <div class="row">
+      <form class="col s12">
+        <div class="row">
+            <div class="input-field col s6" class="blue-text text-darken-2">
+                <i class="material-icons prefix">email</i>
+                <input type="text" name="email" id="email" placeholder="email" class="validate">
+            </div>
+          </div></div>
+        <div class="row">
+          <div class="input-field col s6" class="blue-text text-darken-2">
+              <i class="material-icons prefix">security </i>
+              <input type="password" name="password" placeholder="password" >
+          </div>
+        </div>
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                  <div class="input-field col s6" class="blue-text text-darken-2">
+                      <i class="material-icons prefix">person</i>
+                      <input type="text" name="username" id="username" placeholder="name" >
+                  </div>
+                </div></div>
+        <div class="row">
+            <div class="input-field col s6" class="blue-text text-darken-2">
+                <i class="material-icons prefix">phone</i>
+                <input type="text" name="phone" placeholder="phone">
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="input-field col s6" class="blue-text text-darken-2">
+                  <i class="material-icons prefix">perm_contact_calendar</i>
+                  <input type="date" class="datepicker" name="weddingDate" placeholder="wedding Date">
+                  <label>wedding Date</label>
+              </div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button class="submitButton" type="submit">Create User</button>
+      </form>
+      
+ 
+    </div>
+   <br><Br>
+<!-- 
+<footer> <img src="/static/images/footer.png" height="100px" width="100%"></a> </footer> -->
+</body>
+<script src="/static/js/main.js"></script>
+</html>

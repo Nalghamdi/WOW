@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <link rel='stylesheet' type='text/css' href='/static/styles/styles.css'>
+    <title>Document</title>
+</head>
+<body>
+        <h1>Venues</h1>
+        <a href="/">Back to home page</a>
+        <a href="/users/{{user_id}}/vendor">Back to vendors</a>
+       <!-- <button type="submit" onclick="myFunction()"> riyadh</button>  -->
+       <button type="submit" id="showRiyadh"> riyadh</button> 
+       <button type="submit" id="showDammam"> Dammam</button> 
+       <button type="submit" id="showAll"> All</button> 
+
+       <div id="all"> {{#venue}} 
+           {{pic}}     
+           <a href="/users/{{user_id}}/vendor/venue/{{id}}">  <li>{{name}}</li></a>
+
+
+          <form action="/users/{{user_id}}/vendor/venue" method="POST">
+            <input id="like" type="hidden" name="like" value ="{{id}}" >
+            <button type="submit">Like</button>
+          </form>
+            {{/venue}}
+        </div>
+
+        <div class="r" style="display: none"> <h1>riyadh</h1>
+        {{#venueRiyadh}}
+       <img src="{{pic}}"> 
+        <a href="/users/{{user_id}}/vendor/venue/{{id}}">  <li>{{name}}</li></a>
+
+
+       <form action="/users/1/vendor/venue" method="POST">
+         <input id="like" type="hidden" name="like" value ="{{id}}" >
+         <button type="submit">Like</button>
+       </form>
+        {{/venueRiyadh}}
+        </div>
+          
+        <div class="d" style="display: none"> <h1>Dammam</h1>
+            {{#venueDammam}}
+            <a href="/users/{{user_id}}/vendor/venue/{{id}}">  <li>{{name}}</li></a>
+
+
+            <form action="/users/{{user_id}}/vendor/venue" method="POST">
+              <input id="like" type="hidden" name="like" value ="{{id}}" >
+              <button type="submit">Like</button>
+            </form>
+            {{/venueDammam}}
+        </div>      
+    
+</body>
+<script>
+    $(document).ready(function(){
+
+       $('#showAll').on('click',function myFunction() {
+        $('.r').hide();
+        $('.d').hide();
+        $('#all').show();}) 
+
+          $('#showRiyadh').on('click',function myFunction() {
+        $('.r').show();
+        $('.d').hide();
+        $('#all').hide();}) 
+
+        $('#showDammam').on('click',function myFunction() {
+        $('.r').hide();
+        $('.d').show();
+        $('#all').hide();}) 
+
+    });
+
+    
+        </script>
+</html>
