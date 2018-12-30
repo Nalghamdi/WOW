@@ -181,7 +181,7 @@ vendor.like = function(req,res,next){
 // SELECT count(vendor.name) FROM vendor,likes,users WHERE  user_id =1 AND vendor.category='venue';
 
 vendor.allLikes = function(req,res,next){
-    db.manyOrNone("SELECT vendor.name,vendor.id,vendor.pic FROM vendor,likes,users WHERE likes.user_id= users.id AND user_id =$1;",[req.session.user.id] )
+    db.manyOrNone("SELECT vendor.name,vendor.id,vendor.pic FROM vendor,likes,users WHERE likes.user_id= users.id AND likes.vendor_id=vendor.id AND user_id =$1;",[req.session.user.id] )
     .then(function(result){
         res.locals.allLikes=result;
         next();

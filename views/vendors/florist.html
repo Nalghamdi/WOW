@@ -8,54 +8,144 @@
     src="https://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
-    <link rel='stylesheet' type='text/css' href='/static/styles/styles.css'>
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>WOW</title>
 </head>
 <body>
-        <h1>Venues</h1>
+        <header>
+                <div class="container1" >
+                
+                <marquee><img src="/static/images/free.png" style="width:300px ; hight:300px" /></marquee>
+             
+                <div id="branding">
+                <center><img src="/static/images/logo2.png" alt="logo" style="width:300px ; hight:100px" ></center>
+                </div><br>
+                
+                <div class="headNav" class="center-align" class="card-panel teal lighten-2">
+               <div class="blue-text text-darken-2">
+                 <a href="/users/login"  class="center-align"> Home</a>
+                 <a href="/about" class="center-align"> About</a>
+                <a href="/services" class="center-align">Services </a>
+                 <!-- <div id="comments">
+                    <a href="#" class="btn">Contact Us</a>
+                    <div id="comment-wrap">
+                        <iframe src="contact.html"></iframe>
+                    </div></div> -->
+                  </div>
+              </div>
+                
+                </header>
+                <div class="container1" >
+        <h1>florists</h1>
         <a href="/">Back to home page</a>
-        <a href="/users/{{user_id}}/vendor">Back to vendors</a>
+        <a href="/users/{{user_id}}/">Back to vendors</a>
+        <img src="/static/images/saudi.png" alt="logo" style="width:300px ; hight:100px" >
        <!-- <button type="submit" onclick="myFunction()"> riyadh</button>  -->
        <button type="submit" id="showRiyadh"> riyadh</button> 
        <button type="submit" id="showDammam"> Dammam</button> 
        <button type="submit" id="showAll"> All</button> 
-
-       <div id="all"> {{#venue}} 
-           {{pic}}     
-           <a href="/users/{{user_id}}/vendor/venue/{{id}}">  <li>{{name}}</li></a>
+<!-- 
+       <div id="all"> {{#florist}}      
 
 
-          <form action="/users/{{user_id}}/vendor/venue" method="POST">
-            <input id="like" type="hidden" name="like" value ="{{id}}" >
-            <button type="submit">Like</button>
-          </form>
-            {{/venue}}
-        </div>
+
+          <div class="row">
+                <div class="col s6 m6">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="{{pic}}">
+                      <a href="/users/{{user_id}}/vendor/florist/{{id}}">  <span class="card-title">{{name}}</span></a>
+                      <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    </div>
+                    <div class="card-content">
+                            <form action="/users/{{user_id}}/vendor/florist" method="POST">
+                                <input id="like" type="hidden" name="like" value ="{{id}}" >
+                                <button type="submit">Like</button>
+                              </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            {{/florist}}
+        </div> -->
+        <div id="all">
+        <div class="container">
+                <div class="row">
+                        {{#florist}}  
+                  <div class="col s12 m6 l4">
+                    <div class="card medium">
+                      <div class="card-content">
+                        <div class="card-image">
+                          <img src="{{pic}}" alt="">
+                        </div>
+                        <div class="card-title">{{name}}</div>
+                        <div class="card-action red lighten-3">
+                                <form action="/users/{{user_id}}/vendor/florist" method="POST">
+                                    <input id="like" type="hidden" name="like" value ="{{id}}" >
+                                    <button type="submit">Like</button>
+                                  </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {{/florist}}
+                </div>
+              </div>
+            </div>
 
         <div class="r" style="display: none"> <h1>riyadh</h1>
-        {{#venueRiyadh}}
-       <img src="{{pic}}"> 
-        <a href="/users/{{user_id}}/vendor/venue/{{id}}">  <li>{{name}}</li></a>
 
-
-       <form action="/users/1/vendor/venue" method="POST">
-         <input id="like" type="hidden" name="like" value ="{{id}}" >
-         <button type="submit">Like</button>
-       </form>
-        {{/venueRiyadh}}
-        </div>
+            <div class="container">
+                    <div class="row">
+                            {{#floristRiyadh}}
+                      <div class="col s12 m6 l4">
+                        <div class="card medium">
+                          <div class="card-content">
+                            <div class="card-image">
+                              <img src="{{pic}}" alt="">
+                            </div>
+                            <div class="card-title">{{name}}</div>
+                            <div class="card-action red lighten-3">
+                                    <form action="/users/{{user_id}}/vendor/florist" method="POST">
+                                        <input id="like" type="hidden" name="like" value ="{{id}}" >
+                                        <button type="submit">Like</button>
+                                      </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {{/floristRiyadh}}
+                    </div>
+                  </div></div>
           
         <div class="d" style="display: none"> <h1>Dammam</h1>
-            {{#venueDammam}}
-            <a href="/users/{{user_id}}/vendor/venue/{{id}}">  <li>{{name}}</li></a>
-
-
-            <form action="/users/{{user_id}}/vendor/venue" method="POST">
-              <input id="like" type="hidden" name="like" value ="{{id}}" >
-              <button type="submit">Like</button>
-            </form>
-            {{/venueDammam}}
-        </div>      
+            <div class="container">
+                    <div class="row">
+                            {{#floristDammam}}
+                      <div class="col s12 m6 l4">
+                        <div class="card medium">
+                          <div class="card-content">
+                            <div class="card-image">
+                              <img src="{{pic}}" alt="">
+                            </div>
+                            <div class="card-title">{{name}}</div>
+                            <div class="card-action red lighten-3">
+                                    <form action="/users/{{user_id}}/vendor/florist" method="POST">
+                                        <input id="like" type="hidden" name="like" value ="{{id}}" >
+                                        <button type="submit">Like</button>
+                                      </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {{/floristDammam}}
+                    </div>
+                  </div>
     
 </body>
 <script>

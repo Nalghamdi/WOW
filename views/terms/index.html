@@ -53,10 +53,10 @@
       <button type="submit">Log Out</button>
     </form>
 
-    <a href="/users/{{user_id}}/">Back to Dashboard</a>
+    <a href="/users/{{user_id}}/" style="color:#f7b39b">Back to Dashboard</a>
     <div class="listHeader">
         <a href="#new" rel="modal:open"><i class="material-icons">add</i>New Task</a>
-        <a href="/users/{{user_id}}/todo/completed"><i class="material-icons">assignment_turned_in</i>Completed{{completed.count}}</a>
+        <a href="/users/{{user_id}}/todo/completed"><i class="material-icons">assignment_turned_in</i>Completed : {{completed.count}}</a>
         <i class="material-icons">add_alarm</i> Remaining: {{remaining.count}}
     </div>
 

@@ -49,7 +49,7 @@ todo.getRemaining = function (req,res,next){
 
 todo.addDummyData= function(req,res,next){
 
-    db.one(`INSERT INTO todo (task,completion,users_id) VALUES('try this',false, (select id from users where id=$1));`, [req.session.user.id ])
+    db.one(`INSERT INTO todo (task,completion,users_id) VALUES('Make a checklist ',false, (select id from users where id=$1)) ;`, [req.session.user.id ])
     .then(function(result){
         res.locals.todo=result;
         console.log(res.locals.todo);

@@ -10,11 +10,11 @@
     </style>
   </head>
   <body>
-        <a href="/users/{{user_id}}/vendor/venue/{{id}}">  <li>{{allLikes.name}}</li></a>
-        <h1> hi</h1>
+        {{allLikes.name}}
+        <h1> Likes</h1>
     {{#likes}}
-    <a href="/users/{{user_id}}/vendor/venue/{{id}}">  <li>{{name}}</li></a>
-    {{pic}}
+    <a href="/users/{{user_id}}/vendor/florist/{{id}}">  <li>{{name}}</li></a>
+    <img src={{pic}}>
     {{/likes}}
 
    

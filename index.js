@@ -65,7 +65,7 @@ app.use('/users', usersController);
 app.get('/', (req, res) => {
   res.redirect('/login');})
 app.get('/about', (req, res) => {
-res.render('./about');})
+res.render('./home');})
 app.get('/services', (req, res) => {
   res.render('./services');})
 

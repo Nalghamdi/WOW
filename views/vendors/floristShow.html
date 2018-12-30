@@ -1,16 +1,46 @@
+<!-- did'nt style this page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-  <title>Show Term</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>WOW</title>
 </head>
 <body>
-  
+        <header>
+                <div class="container1" >
+                
+                <marquee><img src="/static/images/free.png" style="width:300px ; hight:300px" /></marquee>
+             
+                <div id="branding">
+                <center><img src="/static/images/logo2.png" alt="logo" style="width:300px ; hight:100px" ></center>
+                </div><br>
+                
+                <div class="headNav" class="center-align" class="card-panel teal lighten-2">
+               <div class="blue-text text-darken-2">
+                 <a href="/users/login"  class="center-align"> Home</a>
+                 <a href="/about" class="center-align"> About</a>
+                <a href="/services" class="center-align">Services </a>
+                 <!-- <div id="comments">
+                    <a href="#" class="btn">Contact Us</a>
+                    <div id="comment-wrap">
+                        <iframe src="contact.html"></iframe>
+                    </div></div> -->
+                  </div>
+              </div>
+                
+                </header>
+                <div class="container1" >
     <a href="/">Back to home page</a>
     <a href="/users/{{user_id}}/vendor/">Back to vendors</a>
     <a href="/users/{{user_id}}/vendor/venue/">Back to venues</a>
@@ -25,12 +55,13 @@
     <a href="{{website}}">Website</a>
     <a href="tel:{{phone}}">Call {{phone}}</a>
    
+    <div id="social">
 <li><a href="{{twitter}}"> <i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 <li><a href="{{instagram}}"><i class="fa fa-instagram" aria-hidden="true"></a></i></li>
 <li><a href="{{facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></i></li>
 <li><a href=" {{snapchat}} "><i class="fa fa-snapchat-ghost" aria-hidden="true"></i></a></i></li>
 <iframe src="{{map}}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-
+</div>
   {{/show}}
 
   {{#showP}}
@@ -48,7 +79,7 @@
     <input type="submit" value="Send">
     <input type="reset" value="Reset">
     </form>
-    {{/user}}
+    {{/user}}</div>
 
 </body>
 </html>

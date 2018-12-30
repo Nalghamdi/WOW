@@ -1,3 +1,5 @@
+// For the vendors i only did the florist since the rest have the same idea and i was running out of time 🙁
+
 var express = require('express');
 var router = express.Router();
 
